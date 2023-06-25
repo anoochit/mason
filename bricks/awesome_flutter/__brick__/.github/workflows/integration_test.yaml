@@ -1,0 +1,35 @@
+on:
+  push:
+    tags-ignore:
+      - "**"
+    branches:
+      - "**"
+name: Flutter integration test
+jobs:
+  drive_android:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        api-level: [31]
+        target: [playstore]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v2
+        with:
+          distribution: "zulu"
+          java-version: "11"
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.3.10"
+          channel: "stable"
+      - run: flutter --version
+
+      # Run integration test
+      - name: Run Flutter integration tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          target: ${{ matrix.target }}
+          api-level: ${{ matrix.api-level }}
+          arch: x86_64
+          profile: Nexus 6
+          script: flutter test integration_test/a11y.dart integration_test/increment.dart
