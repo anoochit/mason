@@ -1,29 +1,20 @@
-import 'package:dashboard/binding/root_binding.dart';
+import 'package:dashboard/app/binding/root_binding.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
-import 'routes/routes.dart';
+import 'app/routes/app_pages.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Dashboard',
+  runApp(
+    GetMaterialApp(
+      title: "Dashboard",
+      initialRoute: AppPages.INITIAL,
+      initialBinding: RootBinding(),
+      getPages: AppPages.routes,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
-        ),
         useMaterial3: true,
       ),
-      initialBinding: RootBinding(),
-      initialRoute: '/',
-      getPages: routes,
-    );
-  }
+    ),
+  );
 }
