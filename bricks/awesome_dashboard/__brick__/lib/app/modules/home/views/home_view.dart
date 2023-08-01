@@ -1,4 +1,7 @@
+import 'package:dashboard/app/modules/home/views/book_body_view.dart';
+import 'package:dashboard/app/modules/home/views/course_body_view.dart';
 import 'package:dashboard/app/modules/home/views/home_body_view.dart';
+import 'package:dashboard/app/modules/home/views/profile_body_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -56,9 +59,9 @@ class HomeView extends GetView<HomeController> {
                   index: controller.navIndex.value,
                   children: const [
                     HomeBodyView(),
-                    Text('Book'),
-                    Text('Course'),
-                    Text('Profile'),
+                    BookBodyView(),
+                    CourseBodyView(),
+                    ProfileBodyView(),
                   ],
                 )),
           )
