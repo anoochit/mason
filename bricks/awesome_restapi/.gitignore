@@ -2,7 +2,8 @@
 
 # Files and directories created by pub
 .dart_tool/
-.packages
+.packages.lock
+package-lock.json
 pubspec.lock
 
 # Files and directories created by dart_frog

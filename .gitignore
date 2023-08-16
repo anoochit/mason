@@ -1,4 +1,4 @@
 .mason/
 x
 mason.yaml
-*.json
+mason-lock.json
