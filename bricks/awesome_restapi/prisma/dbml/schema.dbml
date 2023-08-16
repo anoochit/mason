@@ -1,0 +1,22 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table post {
+  id Int [pk, increment]
+  title String [not null]
+  content String [not null]
+  userId Int
+  createdAt DateTime [default: `now()`, not null]
+  user user
+}
+
+Table user {
+  id Int [pk, increment]
+  username String [unique, not null]
+  password String [not null]
+  createdAt DateTime [default: `now()`, not null]
+  post post [not null]
+}
+
+Ref: post.userId > user.id
