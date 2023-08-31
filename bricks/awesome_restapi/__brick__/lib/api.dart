@@ -11,7 +11,7 @@ import 'package:orm/logger.dart';
 export 'repository/user.dart';
 export 'src/api_base.dart';
 
-//  Export any libraries intended for clients of this package.
+/// prisma client connect to database
 final prisma = PrismaClient(
   stdout: Event.values, // print all events to the console
   datasources: Datasources(

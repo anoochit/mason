@@ -6,6 +6,7 @@ import 'package:dart_frog_auth/dart_frog_auth.dart';
 Handler middleware(Handler handler) {
   final userRepository = UserRepository();
 
+  // bearer auth
   return handler
       .use(requestLogger())
       .use(

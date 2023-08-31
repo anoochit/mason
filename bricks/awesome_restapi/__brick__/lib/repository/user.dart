@@ -5,9 +5,9 @@ import 'package:api/src/generated/prisma/prisma_client.dart';
 import 'package:crypto/crypto.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 
-// user repository
+/// user repository
 class UserRepository {
-  // signup
+  /// signup
   Future<(String?, User?)> signUp(
       {required String username, required String password}) async {
     final hashPassword = textEncode(plain: password);
@@ -30,6 +30,7 @@ class UserRepository {
     return (token, user);
   }
 
+  /// generate token
   String generateToken({required int id, required String username}) {
     final jwt = JWT({
       'id': id,
@@ -42,6 +43,7 @@ class UserRepository {
     );
   }
 
+  /// fetch user from token
   Future<User?> fetchFromToken(String token) async {
     try {
       final jwt = JWT.verify(token, SecretKey('verysecretkey'));
@@ -57,7 +59,7 @@ class UserRepository {
     }
   }
 
-  ///
+  /// signin
   Future<(String?, User?)> signIn({
     required String username,
     required String password,
@@ -83,6 +85,7 @@ class UserRepository {
     }
   }
 
+  /// encode password
   String textEncode({required String plain}) {
     final bytes = utf8.encode(plain);
     final result = sha256.convert(bytes);
